@@ -20,6 +20,7 @@ module.exports = {
         alias: {
             'images': IMAGES_PATH,
             'fonts': FONTS_PATH,
+            'js': JS_PATH,
             'styles': SCSS_PATH,
         },
         extensions: ['.js', '.jsx', '.scss'],
@@ -28,23 +29,29 @@ module.exports = {
     module: {
         rules: [{
             test: /\.scss$/,
-            loaders: ['classnames-loader', 'style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+            loaders: [
+                'classnames-loader',
+                'style-loader',
+                'css-loader?modules=1&sourceMap&importLoaders=1&localIdentName=[name]_[local]',
+                'postcss-loader',
+                'sass-loader'
+            ],
             include: APP_PATH
         }, {
             test: /\.jsx?$/,
             loader: 'babel-loader',
             include: JS_PATH,
             query: {
-                presets: ['es2015']
+                presets: ['react', 'es2015', 'stage-2'],
             }
         }, {
             test: /\.(jpe?g|png|gif|svg)$/,
             loader: 'file-loader',
             include: IMAGES_PATH,
         }, {
-            include: FONTS_PATH,
             test: /\.(woff|woff2)$/,
-            loader: 'file-loader'
+            loader: 'url-loader',
+            include: FONTS_PATH,
         }, {
             test: /\.html$/,
             loader: 'html-loader'

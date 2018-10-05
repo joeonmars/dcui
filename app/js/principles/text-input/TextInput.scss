@@ -1,0 +1,43 @@
+@import '~styles/colors';
+@import '~styles/ui';
+
+
+.container input {
+	width: 100%;
+	appearance: none;
+	outline: none;
+	border: transparent 1px solid;
+	padding: 8px 25px;
+	border-radius: $border-radius-s;
+	font-family: 'AzoSansRegular';
+	line-height: 1.3;
+	font-size: inherit;
+	box-sizing: border-box;
+
+	&::placeholder {
+		color: inherit;
+		opacity: .4;
+	}
+}
+
+.container.error input {
+	border-color: $alizarin-crimson;
+}
+
+.lighter input{
+	background: rgba(white, .1);
+	color: $nepal;
+}
+
+.error-message {
+	display: block;
+	margin: 4px 0;
+	color: $alizarin-crimson;
+	font-size: 14px;
+	line-height: 1.3;
+	font-family: 'AzoSansRegular';
+
+	&.hidden {
+		visibility: hidden;
+	}
+}
