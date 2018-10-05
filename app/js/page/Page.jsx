@@ -1,10 +1,13 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import styles from './Page.scss';
 
 const Page = () => {
-  return (
-  	<div>Hello React!</div>
-  );
+
+	return (
+		<div className={styles('container')}>
+			Hello React!
+		</div>
+	);
 };
 
 export default Page;

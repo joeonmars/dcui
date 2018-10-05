@@ -1,7 +1,9 @@
-import 'styles/reset.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import TestPage from './page';
 
-ReactDOM.render(TestPage(), document.getElementById('app'));
+import 'styles/reset.scss';
+
+const page = TestPage();
+const app_container = document.getElementById('app');
+ReactDOM.render(page, app_container);

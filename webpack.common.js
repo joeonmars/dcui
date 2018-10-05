@@ -28,7 +28,7 @@ module.exports = {
     module: {
         rules: [{
             test: /\.scss$/,
-            loaders: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+            loaders: ['classnames-loader', 'style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
             include: APP_PATH
         }, {
             test: /\.jsx?$/,
