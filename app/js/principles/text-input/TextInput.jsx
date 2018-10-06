@@ -41,11 +41,7 @@ export default class TextInput extends PureComponent {
 	}
 
 	handleChange(e) {
-		if (this.state.invalid) {
-			this.setState({
-				invalid: false,
-			});
-		}
+
 	}
 
 	handleInvalid(e) {
