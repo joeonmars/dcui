@@ -30,20 +30,25 @@ export default class NewsletterSignUp extends Component {
 					<h1 className={styles('call-to-action')}>
 						<ExpressiveLabel text='join the list' />
 					</h1>
-					<div>
+					<div className={styles('action-container')}>
 						<form onSubmit={this.handleSubmit}>
 							<fieldset>
 								<legend className={styles('form-label')}>
 									<RegularLabel text='Sign up for the TLC newsletter.' />
 								</legend>
-								<TextInput
-									required={true}
-									className={styles('email-input')}
-									placeholder='enter email address'
-									pattern={TextInput.Pattern.EMAIL}
-									error_message='Please enter a valid email address.'
-								/>
-								<SubmitButton text='Next' />
+								<div className={styles('input-group')}>
+									<TextInput
+										required={true}
+										type='email'
+										className={styles('email-input')}
+										placeholder='enter email address'
+										error_message='Please enter a valid email address'
+									/>
+									<SubmitButton
+										className={styles('submit-button')}
+										text='Next'
+									/>
+								</div>
 							</fieldset>
 						</form>
 						<form onSubmit={this.handleSubmit}>
@@ -51,19 +56,24 @@ export default class NewsletterSignUp extends Component {
 								<legend className={styles('form-label')}>
 									<RegularLabel text='Almost Done! Please Enter Your First and Last Name.' />
 								</legend>
-								<TextInput
-									required={true}
-									className={styles('name-input')}
-									placeholder='First Name'
-									pattern={TextInput.Pattern.EMAIL}
-								/>
-								<TextInput
-									required={true}
-									className={styles('name-input')}
-									placeholder='Last Name'
-									pattern={TextInput.Pattern.EMAIL}
-								/>
-								<SubmitButton text='Sign Up' />
+								<div className={styles('input-group')}>
+									<TextInput
+										required={true}
+										className={styles('name-input')}
+										placeholder='First Name'
+										error_message='Enter first name'
+									/>
+									<TextInput
+										required={true}
+										className={styles('name-input')}
+										placeholder='Last Name'
+										error_message='Enter last name'
+									/>
+									<SubmitButton
+										className={styles('submit-button')}
+										text='Sign Up'
+									/>
+								</div>
 							</fieldset>
 						</form>
 					</div>

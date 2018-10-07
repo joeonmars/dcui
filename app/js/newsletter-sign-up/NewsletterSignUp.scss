@@ -9,7 +9,7 @@
 	//Desktop
 	margin: 0 auto;
 	max-width: 1440px;
-	padding: 40px 0;
+	padding: 40px;
 
 	//
 	display: flex;
@@ -19,7 +19,7 @@
 
 .call-to-action {
 	font-size: 80px;
-	margin-left: 13%;
+	margin-left: 10%;
 	margin-right: 4.8%;
 }
 
@@ -28,7 +28,28 @@
 	margin-bottom: 25px;
 }
 
-.email-input {
-	width: 480px;
+.email-input,
+.name-input {
+	flex: 1;
 	font-size: 24px;
+	margin-right: 10px;
 }
+
+.email-input {
+	max-width: 480px;
+}
+
+.name-input {
+	max-width: 235px;
+}
+
+.submit-button {
+	margin-left: 10px;
+}
+
+.input-group {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+}
+

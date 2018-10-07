@@ -7,18 +7,14 @@ import styles from './TextInput.scss';
 
 export default class TextInput extends PureComponent {
 
-	static Pattern = {
-		EMAIL: '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$',
-	}
-
 	static propTypes = {
 		className: PropTypes.string,
 		errorMsgClassName: PropTypes.string,
+		type: PropTypes.oneOf(['text', 'email']),
 		name: PropTypes.string,
 		required: PropTypes.bool,
 		disabled: PropTypes.bool,
 		placeholder: PropTypes.string,
-		pattern: PropTypes.string,
 		error_message: PropTypes.string,
 		theme: PropTypes.oneOf(['lighter', 'darker']),
 	}
@@ -26,6 +22,7 @@ export default class TextInput extends PureComponent {
 	static defaultProps = {
 		required: false,
 		disabled: false,
+		type: 'text',
 		theme: 'lighter',
 	}
 
@@ -66,14 +63,13 @@ export default class TextInput extends PureComponent {
 		return (
 			<div className={container_class}>
 				<input
-					type='text'
 					spellCheck='false'
+					type={this.props.type}
 					name={this.props.name}
 					title={this.props.placeholder}
 					disabled={this.props.disabled}
 					required={this.props.required}
 					placeholder={this.props.placeholder}
-					pattern={this.props.pattern}
 					onInvalid={this.handleInvalid}
 					onChange={this.handleChange}
 				/>
