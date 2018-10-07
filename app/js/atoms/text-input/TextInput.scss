@@ -2,7 +2,7 @@
 @import '~styles/ui';
 
 
-.container input {
+.input {
 	width: 100%;
 	appearance: none;
 	outline: none;
@@ -20,24 +20,7 @@
 	}
 }
 
-.container.error input:invalid {
-	border-color: $alizarin-crimson;
-
-	& ~ .error-message {
-		visibility: inherit;
-	}
-}
-
-.lighter input{
+.lighter {
 	background: rgba(white, .1);
 	color: $nepal;
-}
-
-.error-message {
-	display: block;
-	color: $alizarin-crimson;
-	font-size: 12px;
-	line-height: 1.3;
-	font-family: 'AzoSansRegular';
-	visibility: hidden;
 }

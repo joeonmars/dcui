@@ -6,7 +6,8 @@ import styles from './NewsletterSignUp.scss';
 import ExpressiveLabel from 'js/atoms/expressive-label';
 import RegularLabel from 'js/atoms/regular-label';
 import TextInput from 'js/atoms/text-input';
-import LabeledCheckbox from 'js/molecules/labeled-checkbox';
+import Checkbox from 'js/atoms/checkbox';
+import InputWithMessage from 'js/molecules/input-with-message';
 import { SubmitButton } from 'js/atoms/text-button';
 
 
@@ -84,20 +85,22 @@ export default class NewsletterSignUp extends Component {
 									</legend>
 									<div className={styles('input-group')}>
 										<div>
-											<TextInput
-												required={true}
+											<InputWithMessage
+												input={TextInput}
 												type='email'
 												name='email'
+												required={true}
 												className={styles('email-input')}
 												placeholder='enter email address'
-												error_message='Please enter a valid email address'
+												invalid_message='Please enter a valid email address'
 											/>
-											<LabeledCheckbox
+											<InputWithMessage
+												input={Checkbox}
 												name='opt_in'
 												required={true}
 												default_checked={false}
-												error_message='Please opt in to proceed'
 												label={<p>I agree to receive information from Discovery Communications in accordance with the following <a target='_blank' href='/'>Privacy Policy</a></p>}
+												invalid_message='Please opt in to proceed'
 											/>
 										</div>
 										<SubmitButton

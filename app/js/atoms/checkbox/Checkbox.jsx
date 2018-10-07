@@ -1,23 +1,47 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './Checkbox.scss';
+/*
+	white-space: nowrap;
 
+	>input,
+	>label {
+		display: inline-block;
+		vertical-align: text-top;
+	}
 
-const Checkbox = ({className, id, name, required, default_checked, onInvalid}) => {
+	>input {
+		margin-right: 8px;
+	}
 
-	const checkbox_class = classnames(styles('checkbox'), className);
+	>label {
+		white-space: normal;
+	}*/
+
+const Checkbox = ({id, name, required, default_checked, label, onInvalid}) => {
+
+	const checkbox_class = classnames(styles('checkbox'));
+	const label_class = classnames(styles('label'));
 
 	return (
-		<input
-			className={checkbox_class}
-			type='checkbox'
-			id={id}
-			name={name}
-			required={required}
-			defaultChecked={default_checked}
-			onInvalid={onInvalid}
-		/>
+		<Fragment>
+			<input
+				className={checkbox_class}
+				type='checkbox'
+				id={id}
+				name={name}
+				required={required}
+				defaultChecked={default_checked}
+				onInvalid={onInvalid}
+			/>
+			<label
+				className={label_class}
+				htmlFor={id}
+			>
+				{label}
+			</label>
+		</Fragment>
 	);
 };
 
@@ -26,6 +50,7 @@ Checkbox.propTypes = {
 	required: PropTypes.bool,
 	id: PropTypes.string,
 	name: PropTypes.string.isRequired,
+	label: PropTypes.node.isRequired,
 	default_checked: PropTypes.bool,
 	onInvalid: PropTypes.func,
 };

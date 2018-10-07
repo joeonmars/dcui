@@ -1,0 +1,13 @@
+@import '~styles/colors';
+
+.container.invalid input:invalid {
+	border-color: $alizarin-crimson;
+
+	& ~ .message {
+		visibility: inherit;
+	}
+}
+
+.message {
+	visibility: hidden;
+}

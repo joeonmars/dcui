@@ -5,74 +5,51 @@ import classnames from 'classnames';
 import styles from './TextInput.scss';
 
 
-export default class TextInput extends PureComponent {
+const TextInput = ({
+		className,
+		type,
+		name,
+		required,
+		disabled,
+		placeholder,
+		theme,
+		onInvalid,
+	}) => {
 
-	static propTypes = {
-		className: PropTypes.string,
-		errorMsgClassName: PropTypes.string,
-		type: PropTypes.oneOf(['text', 'email']),
-		name: PropTypes.string,
-		required: PropTypes.bool,
-		disabled: PropTypes.bool,
-		placeholder: PropTypes.string,
-		error_message: PropTypes.string,
-		theme: PropTypes.oneOf(['lighter', 'darker']),
-	}
+	const input_class = classnames(
+		styles('input', theme), className);
 
-	static defaultProps = {
-		required: false,
-		disabled: false,
-		type: 'text',
-		theme: 'lighter',
-	}
+	return (
+		<input
+			className={input_class}
+			spellCheck='false'
+			type={type}
+			name={name}
+			title={placeholder}
+			disabled={disabled}
+			required={required}
+			placeholder={placeholder}
+			onInvalid={onInvalid}
+		/>
+	);
+};
 
-	state = {
-		invalid: false,
-	}
-
-	constructor(props) {
-		super(props);
-
-		this.handleInvalid = this.handleInvalid.bind(this);
-	}
-
-	handleInvalid(e) {
-		e.preventDefault();
-
-		this.setState({
-			invalid: true,
-		});
-	}
-
-	render() {
-		const container_class = classnames(
-			styles('container', this.props.theme, {
-				'error': this.state.invalid,
-			}), this.props.className);
-
-		const error_class = classnames(
-			styles('error-message', {
-				'hidden': !this.state.invalid,
-			}), this.props.errorMsgClassName);
-
-		return (
-			<div className={container_class}>
-				<input
-					spellCheck='false'
-					type={this.props.type}
-					name={this.props.name}
-					title={this.props.placeholder}
-					disabled={this.props.disabled}
-					required={this.props.required}
-					placeholder={this.props.placeholder}
-					onInvalid={this.handleInvalid}
-				/>
-				{this.props.error_message &&
-					<strong className={error_class}>
-						{this.props.error_message}
-					</strong>
-				}
-			</div>
-		);
-	}
+TextInput.defaultProps = {
+	required: false,
+	disabled: false,
+	type: 'text',
+	theme: 'lighter',
 }
+
+TextInput.propTypes = {
+	className: PropTypes.string,
+	type: PropTypes.oneOf(['text', 'email']),
+	name: PropTypes.string,
+	required: PropTypes.bool,
+	disabled: PropTypes.bool,
+	placeholder: PropTypes.string,
+	theme: PropTypes.oneOf(['lighter', 'darker']),
+	onInvalid: PropTypes.func,
+};
+
+export default TextInput;
