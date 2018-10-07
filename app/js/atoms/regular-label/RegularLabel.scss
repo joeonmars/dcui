@@ -1,0 +1,22 @@
+@import '~styles/colors';
+
+
+.text {
+	color: $nepal;
+	line-height: 1.25;
+
+	&.bold_all_caps,
+	&.light_all_caps {
+		text-transform: uppercase;
+	}
+
+	&.bold,
+	&.bold_all_caps {
+		font-family: 'AzoSansBold';
+	}
+
+	&.light,
+	&.light_all_caps {
+		font-family: 'AzoSansLight';
+	}
+}

@@ -42,7 +42,7 @@ module.exports = {
             loader: 'babel-loader',
             include: JS_PATH,
             query: {
-                presets: ['react', 'es2015', 'stage-2'],
+                presets: ['react', 'es2015', 'stage-2']
             }
         }, {
             test: /\.(jpe?g|png|gif|svg)$/,

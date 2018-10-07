@@ -33,12 +33,7 @@ export default class TextInput extends PureComponent {
 	constructor(props) {
 		super(props);
 
-		this.handleChange = this.handleChange.bind(this);
 		this.handleInvalid = this.handleInvalid.bind(this);
-	}
-
-	handleChange(e) {
-
 	}
 
 	handleInvalid(e) {
@@ -71,7 +66,6 @@ export default class TextInput extends PureComponent {
 					required={this.props.required}
 					placeholder={this.props.placeholder}
 					onInvalid={this.handleInvalid}
-					onChange={this.handleChange}
 				/>
 				{this.props.error_message &&
 					<strong className={error_class}>

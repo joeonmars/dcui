@@ -23,7 +23,7 @@
 .container.error input:invalid {
 	border-color: $alizarin-crimson;
 
-	& + .error-message {
+	& ~ .error-message {
 		visibility: inherit;
 	}
 }
@@ -35,9 +35,8 @@
 
 .error-message {
 	display: block;
-	margin: 4px 0;
 	color: $alizarin-crimson;
-	font-size: 14px;
+	font-size: 12px;
 	line-height: 1.3;
 	font-family: 'AzoSansRegular';
 	visibility: hidden;

@@ -1,0 +1,13 @@
+@import '~styles/colors';
+
+.label {
+	font-family: 'AzoSansLight';
+	font-size: 12px;
+	line-height: 1.16;
+	color: $jumbo;
+
+	a {
+		text-decoration: underline;
+		color: inherit;
+	}
+}
