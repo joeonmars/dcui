@@ -49,7 +49,7 @@ Checkbox.propTypes = {
 	className: PropTypes.string,
 	required: PropTypes.bool,
 	id: PropTypes.string,
-	name: PropTypes.string.isRequired,
+	name: PropTypes.string,
 	label: PropTypes.node.isRequired,
 	default_checked: PropTypes.bool,
 	onInvalid: PropTypes.func,

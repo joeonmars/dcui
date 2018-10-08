@@ -1,5 +1,5 @@
 import React from 'react';
-import NewsletterSignUp from 'js/newsletter-sign-up';
+import NewsletterSignUp from 'js/organisms/newsletter-sign-up';
 
 import styles from './Page.scss';
 
