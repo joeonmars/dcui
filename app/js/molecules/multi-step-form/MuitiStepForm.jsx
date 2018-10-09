@@ -7,8 +7,8 @@ export default class MultiStepForm extends Component {
 
 	static propTypes = {
 		initial_step: PropTypes.number,
-		onChangeStep: PropTypes.func,
-		onCompleteSteps: PropTypes.func,
+		onStepComplete: PropTypes.func,
+		onAllComplete: PropTypes.func,
 	}
 
 	static defaultProps = {
@@ -39,17 +39,24 @@ export default class MultiStepForm extends Component {
 		const current_step = this.state.step;
 		const total_steps = Children.count(this.props.children);
 
+		const next_step = current_step + 1;
+		const next_form_data = Object.assign({}, this.state.form_data, form_data);
+
 		if (current_step < total_steps - 1) {
 
 			this.setState({
-				step: current_step + 1,
-				form_data: Object.assign({}, this.state.form_data, form_data),
+				step: next_step,
+				form_data: next_form_data,
 			}, () => {
-				this.props.onChangeStep(this.state.step);
+				this.props.onStepComplete(this.state.step);
+			});
 
-				if (this.state.step === total_steps - 1) {
-					this.props.onCompleteSteps(this.state.form_data);	
-				}
+		} else {
+
+			this.setState({
+				form_data: next_form_data,
+			}, () => {
+				this.props.onAllComplete(this.state.form_data);
 			});
 		}
 	}

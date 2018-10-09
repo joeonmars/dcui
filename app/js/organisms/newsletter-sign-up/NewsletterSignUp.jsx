@@ -13,18 +13,10 @@ import MultiStepForm from 'js/molecules/multi-step-form';
 
 
 
-const steps = [
-	{
-		call_to_action: 'join the list',
-
-	},
-	{
-		call_to_action: 'join the list',
-	},
-	{
-		call_to_action: 'congratulations!',
-	}
-];
+const Copy = {
+	JOIN_THE_LIST: 'join the list',
+	CONGRATS: 'congratulations!',
+};
 
 export default class NewsletterSignUp extends Component {
 
@@ -39,127 +31,128 @@ export default class NewsletterSignUp extends Component {
 	constructor(props) {
 		super(props);
 
-		this.handleChangeStep = this.handleChangeStep.bind(this);
-		this.handleCompleteSteps = this.handleCompleteSteps.bind(this);
+		this.handleStepComplete = this.handleStepComplete.bind(this);
+		this.handleAllComplete = this.handleAllComplete.bind(this);
 	}
 
-	handleChangeStep(step) {
+	handleStepComplete() {
 		this.setState({
-			step,
+			step: this.state.step + 1,
 		});
 	}
 
-	handleCompleteSteps(form_data) {
+	handleAllComplete(form_data) {
+		this.setState({
+			step: this.state.step + 1,
+		});
+
 		console.log('Ready to POST user: ', form_data);
 	}
 
 	render() {
-		const {
-			call_to_action,
-		} = steps[this.state.step];
+		const has_completed = this.state.step === 2;
 
 		return (
 			<div className={styles('container')}>
 				<div className={styles('resizer')}>
-					<MultiStepForm
-						initial_step={this.state.step}
-						onChangeStep={this.handleChangeStep}
-						onCompleteSteps={this.handleCompleteSteps}
-					>
-						<div className={styles('step')}>
-							<h1 className={styles('call-to-action')}>
-								<ExpressiveLabel text={call_to_action} />
-							</h1>
-							<div className={styles('action-container')}>
-								<legend className={styles('form-label')}>
-									<RegularLabel
-										typography={RegularLabel.Typography.BOLD_ALL_CAPS}
-										text='Sign up for the TLC newsletter.'
-									/>
-								</legend>
-								<div className={styles('input-group')}>
-									<div>
-										<InputWithMessage
-											input={TextInput}
-											type='email'
-											name='email'
-											required={true}
-											className={styles('email-input')}
-											placeholder='enter email address'
-											invalid_message='Please enter a valid email address'
+					<h1 className={styles('call-to-action')}>
+						<ExpressiveLabel text={has_completed ? Copy.CONGRATS : Copy.JOIN_THE_LIST} />
+					</h1>
+
+					{!has_completed &&
+						<MultiStepForm
+							initial_step={this.state.step}
+							onStepComplete={this.handleStepComplete}
+							onAllComplete={this.handleAllComplete}
+						>
+							<div className={styles('step')}>
+								<div className={styles('action-container')}>
+									<legend className={styles('form-label')}>
+										<RegularLabel
+											typography={RegularLabel.Typography.BOLD_ALL_CAPS}
+											text='Sign up for the TLC newsletter.'
 										/>
-										<InputWithMessage
-											input={Checkbox}
-											required={true}
-											default_checked={false}
-											label={<p>I agree to receive information from Discovery Communications in accordance with the following <a target='_blank' href='/'>Privacy Policy</a></p>}
-											invalid_message='Please opt in to proceed'
+									</legend>
+									<div className={styles('input-group')}>
+										<div>
+											<InputWithMessage
+												input={TextInput}
+												type='email'
+												name='email'
+												required={true}
+												className={styles('email-input')}
+												placeholder='enter email address'
+												invalid_message='Please enter a valid email address'
+											/>
+											<InputWithMessage
+												input={Checkbox}
+												required={true}
+												default_checked={false}
+												label={<p>I agree to receive information from Discovery Communications in accordance with the following <a target='_blank' href='/'>Privacy Policy</a></p>}
+												invalid_message='Please opt in to proceed'
+											/>
+										</div>
+										<SubmitButton
+											className={styles('submit-button')}
+											text='Next'
 										/>
 									</div>
-									<SubmitButton
-										className={styles('submit-button')}
-										text='Next'
-									/>
 								</div>
 							</div>
-						</div>
 
-						<div className={styles('step')}>
-							<h1 className={styles('call-to-action')}>
-								<ExpressiveLabel text={call_to_action} />
-							</h1>
-							<div className={styles('action-container')}>
-								<legend className={styles('form-label')}>
-									<RegularLabel
-										typography={RegularLabel.Typography.BOLD_ALL_CAPS}
-										text='Almost Done! Please Enter Your First and Last Name.'
-									/>
-								</legend>
-								<div className={styles('input-group')}>
-									<InputWithMessage
-										input={TextInput}
-										required={true}
-										name='first'
-										className={styles('name-input')}
-										placeholder='First Name'
-										invalid_message='Enter first name'
-									/>
-									<InputWithMessage
-										input={TextInput}
-										required={true}
-										name='last'
-										className={styles('name-input')}
-										placeholder='Last Name'
-										invalid_message='Enter last name'
-									/>
-									<SubmitButton
-										className={styles('submit-button')}
-										text='Sign Up'
-									/>
+							<div className={styles('step')}>
+								<div className={styles('action-container')}>
+									<legend className={styles('form-label')}>
+										<RegularLabel
+											typography={RegularLabel.Typography.BOLD_ALL_CAPS}
+											text='Almost Done! Please Enter Your First and Last Name.'
+										/>
+									</legend>
+									<div className={styles('input-group')}>
+										<InputWithMessage
+											input={TextInput}
+											required={true}
+											name='first'
+											className={styles('name-input')}
+											placeholder='First Name'
+											invalid_message='Enter first name'
+										/>
+										<InputWithMessage
+											input={TextInput}
+											required={true}
+											name='last'
+											className={styles('name-input')}
+											placeholder='Last Name'
+											invalid_message='Enter last name'
+										/>
+										<SubmitButton
+											className={styles('submit-button')}
+											text='Sign Up'
+										/>
+									</div>
 								</div>
 							</div>
-						</div>
 
-						<div className={styles('step')}>
-							<h1 className={styles('call-to-action')}>
-								<ExpressiveLabel text={call_to_action} />
-							</h1>
-							<div className={styles('thank-you')}>
-								<h2>
-									<RegularLabel
-										typography={RegularLabel.Typography.BOLD}
-										text='Thank You For Signing Up!'
-									/>
-								</h2>
-								<p>
-									<RegularLabel
-										typography={RegularLabel.Typography.LIGHT}
-										text='Look out for the latest news on your favorite shows.'
-									/>
-								</p>
-							</div>
+
+						</MultiStepForm>
+					}
+
+					{has_completed &&
+						<div className={styles('thank-you')}>
+							<p>
+								<RegularLabel
+									className={styles('first-line')}
+									typography={RegularLabel.Typography.BOLD}
+									text='Thank You For Signing Up!'
+								/>
+								<RegularLabel
+									className={styles('second-line')}
+									typography={RegularLabel.Typography.LIGHT}
+									text='Look out for the latest news on your favorite shows.'
+								/>
+							</p>
 						</div>
-					</MultiStepForm>
+					}
 
 				</div>
 			</div>

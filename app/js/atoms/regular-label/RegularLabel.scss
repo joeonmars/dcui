@@ -4,7 +4,8 @@
 .text {
 	color: $nepal;
 	line-height: 1.25;
-
+	-webkit-font-smoothing: antialiased;
+	
 	&.bold_all_caps,
 	&.light_all_caps {
 		text-transform: uppercase;
