@@ -2,22 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './Checkbox.scss';
-/*
-	white-space: nowrap;
 
-	>input,
-	>label {
-		display: inline-block;
-		vertical-align: text-top;
-	}
-
-	>input {
-		margin-right: 8px;
-	}
-
-	>label {
-		white-space: normal;
-	}*/
 
 const Checkbox = ({id, name, required, default_checked, label, onInvalid}) => {
 

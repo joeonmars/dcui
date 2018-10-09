@@ -12,7 +12,6 @@ import InputWithMessage from 'js/molecules/input-with-message';
 import MultiStepForm from 'js/molecules/multi-step-form';
 
 
-
 const Copy = {
 	JOIN_THE_LIST: 'join the list',
 	CONGRATS: 'congratulations!',
@@ -62,83 +61,74 @@ export default class NewsletterSignUp extends Component {
 					{!has_completed &&
 						<MultiStepForm
 							initial_step={this.state.step}
+							className={styles('form')}
 							onStepComplete={this.handleStepComplete}
 							onAllComplete={this.handleAllComplete}
 						>
 							<div className={styles('step')}>
-								<div className={styles('action-container')}>
-									<legend className={styles('form-label')}>
-										<RegularLabel
-											typography={RegularLabel.Typography.BOLD_ALL_CAPS}
-											text='Sign up for the TLC newsletter.'
-										/>
-									</legend>
-									<div className={styles('input-group')}>
-										<div>
-											<InputWithMessage
-												input={TextInput}
-												type='email'
-												name='email'
-												required={true}
-												className={styles('email-input')}
-												placeholder='enter email address'
-												invalid_message='Please enter a valid email address'
-											/>
-											<InputWithMessage
-												input={Checkbox}
-												required={true}
-												default_checked={false}
-												label={<p>I agree to receive information from Discovery Communications in accordance with the following <a target='_blank' href='/'>Privacy Policy</a></p>}
-												invalid_message='Please opt in to proceed'
-											/>
-										</div>
-										<SubmitButton
-											className={styles('submit-button')}
-											text='Next'
-										/>
-									</div>
-								</div>
+								<legend className={styles('form-label')}>
+									<RegularLabel
+										typography={RegularLabel.Typography.BOLD_ALL_CAPS}
+										text='Sign up for the TLC newsletter.'
+									/>
+								</legend>
+								<InputWithMessage
+									input={TextInput}
+									type='email'
+									name='email'
+									required={true}
+									className={styles('email')}
+									placeholder='enter email address'
+									invalid_message='Please enter a valid email address'
+								/>
+								<InputWithMessage
+									input={Checkbox}
+									required={true}
+									default_checked={false}
+									id='opt_in'
+									className={styles('opt-in')}
+									label={<p>I agree to receive information from Discovery Communications in accordance with the following <a target='_blank' href='/'>Privacy Policy</a></p>}
+									invalid_message='Please opt in to proceed'
+								/>  
+								<SubmitButton
+									className={styles('submit-button')}
+									text='Next'
+								/>
 							</div>
 
 							<div className={styles('step')}>
-								<div className={styles('action-container')}>
-									<legend className={styles('form-label')}>
-										<RegularLabel
-											typography={RegularLabel.Typography.BOLD_ALL_CAPS}
-											text='Almost Done! Please Enter Your First and Last Name.'
-										/>
-									</legend>
-									<div className={styles('input-group')}>
-										<InputWithMessage
-											input={TextInput}
-											required={true}
-											name='first'
-											className={styles('name-input')}
-											placeholder='First Name'
-											invalid_message='Enter first name'
-										/>
-										<InputWithMessage
-											input={TextInput}
-											required={true}
-											name='last'
-											className={styles('name-input')}
-											placeholder='Last Name'
-											invalid_message='Enter last name'
-										/>
-										<SubmitButton
-											className={styles('submit-button')}
-											text='Sign Up'
-										/>
-									</div>
-								</div>
+								<legend className={styles('form-label')}>
+									<RegularLabel
+										typography={RegularLabel.Typography.BOLD_ALL_CAPS}
+										text='Almost Done! Please Enter Your First and Last Name.'
+									/>
+								</legend>
+								<InputWithMessage
+									input={TextInput}
+									required={true}
+									name='first'
+									className={styles('first-name')}
+									placeholder='First Name'
+									invalid_message='Enter first name'
+								/>
+								<InputWithMessage
+									input={TextInput}
+									required={true}
+									name='last'
+									className={styles('last-name')}
+									placeholder='Last Name'
+									invalid_message='Enter last name'
+								/>
+								<SubmitButton
+									className={styles('submit-button')}
+									text='Sign Up'
+								/>
 							</div>
-
-
 						</MultiStepForm>
 					}
 
 					{has_completed &&
-						<div className={styles('thank-you')}>
+						<div className={styles('sign-up-complete')}>
 							<p>
 								<RegularLabel
 									className={styles('first-line')}

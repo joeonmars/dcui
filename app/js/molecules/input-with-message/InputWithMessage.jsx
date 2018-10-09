@@ -1,5 +1,6 @@
 import React, { Component, createElement } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import InvalidMessage from 'js/atoms/invalid-message';
 import styles from './InputWithMessage.scss';
 
@@ -9,6 +10,7 @@ export default class InputWithMessage extends Component {
 	static propTypes = {
 		input: PropTypes.func.isRequired,
 		invalid_message: PropTypes.string,
+		className: PropTypes.string,
 	}
 
 	state = {
@@ -30,9 +32,9 @@ export default class InputWithMessage extends Component {
 	}
 
 	render() {
-		const container_class = styles('container', {
+		const container_class = classnames(styles('container', {
 			'invalid': this.state.invalid,
-		});
+		}), this.props.className);
 
 		return (
 			<div className={container_class}>

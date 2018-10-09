@@ -1,16 +1,15 @@
 @import '~styles/colors';
 
 .checkbox {
-	appearance: none;
-	outline: none;
-	display: block;
 	width: 12px;
 	height: 12px;
 	border-radius: 3px;
 	background-color: white;
-	border: 1px solid #9B9B9B;
+	border: 1px solid rgba(black, .5);
 	box-sizing: border-box;
 	cursor: pointer;
+	appearance: none;
+	outline: none;
 
 	&:checked {
 		background-image: url(images/checkmark.svg);
@@ -21,13 +20,27 @@
 }
 
 .label {
+	width: calc(100% - 12px);
+	padding-left: 10px;
+	box-sizing: border-box;
 	font-family: 'AzoSansLight';
 	font-size: 12px;
-	line-height: 1.16;
+	line-height: 1.3;
 	color: $jumbo;
 
 	a {
 		text-decoration: underline;
 		color: inherit;
+
+		&:focus {
+			color: white;
+			outline: none;
+		}
 	}
+}
+
+.checkbox,
+.label {
+	display: inline-block;
+	vertical-align: text-top;
 }

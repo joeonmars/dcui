@@ -1,5 +1,6 @@
 import React, { Component, Children } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import styles from './MultiStepForm.scss';
 
 
@@ -7,6 +8,7 @@ export default class MultiStepForm extends Component {
 
 	static propTypes = {
 		initial_step: PropTypes.number,
+		className: PropTypes.string,
 		onStepComplete: PropTypes.func,
 		onAllComplete: PropTypes.func,
 	}
@@ -62,12 +64,12 @@ export default class MultiStepForm extends Component {
 	}
 
 	render() {
-		const form_class = styles('form');
+		const form_class = classnames(styles('form'), this.props.className);
 		const fieldset = this.props.children[this.state.step];
 
 		return (
 			<form className={form_class} onSubmit={this.handleSubmit}>
-				<fieldset>
+				<fieldset key={this.state.step}>
 					{fieldset}
 				</fieldset>
 			</form>

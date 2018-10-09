@@ -1,7 +1,7 @@
 @import '~styles/colors';
 
 .container.invalid input:invalid {
-	border-color: $alizarin-crimson;
+	background: rgba($alizarin-crimson, .15);
 
 	& ~ .message {
 		visibility: inherit;
@@ -9,5 +9,6 @@
 }
 
 .message {
+	margin-top: 5px;
 	visibility: hidden;
 }

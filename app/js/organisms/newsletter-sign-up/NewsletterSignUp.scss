@@ -2,67 +2,88 @@
 
 .container {
 	width: 100%;
-	height: 250px;
+	min-height: 250px;
 	background: $vulcan;
 }
 
 .resizer {
 	//Desktop
+	display: flex;
+	flex-direction: row;
 	margin: 0 auto;
 	max-width: 1440px;
-	padding: 40px;
+	padding: 40px 20px;
 	box-sizing: border-box;
 	height: 100%;
 }
 
 .step {
 	display: flex;
-	flex-direction: row;
-	align-items: center;
-	height: 100%;
+	flex-wrap: wrap;
+	align-items: flex-start;
 }
 
 .call-to-action {
 	font-size: 80px;
 	margin-left: 10%;
 	margin-right: 4.8%;
+	margin-top: 30px;
 }
 
-.action-container {
+.form {
 	flex: 1;
 }
 
-.form-label {
-	font-size: 24px;
-	margin-bottom: 25px;
+.email {
+	order: 1;
+	margin-right: 20px;
 }
 
-.email-input,
-.name-input {
-	flex: 1;
-	font-size: 24px;
-	margin-right: 10px;
+.opt-in {
+	order: 3;
+	padding-right: 10%;
+	box-sizing: border-box;
 }
 
-.email-input {
+.email,
+.opt-in {
+	flex-grow: 1;
 	max-width: 480px;
 }
 
-.name-input {
+.form-label {
+	flex-basis: 100%;
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+.email,
+.first-name,
+.last-name {
+	font-size: 24px;
+	margin-top: 3px;
+}
+
+.first-name,
+.last-name {
 	max-width: 235px;
 }
 
+.first-name {
+	margin-right: 10px;
+}
+
+.last-name {
+	margin-right: 20px;
+}
+
 .submit-button {
-	margin-left: 10px;
+	order: 2;
 }
 
-.input-group {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-}
+.sign-up-complete {
+	align-self: flex-end;
 
-.thank-you {
 	.first-line {
 		font-size: 32px;
 		margin-bottom: 10px;
@@ -77,4 +98,21 @@
 	}
 }
 
+/*
+@media (max-width:320px) {
+	// mobile
+}
+@media (min-width:321px) and (max-width:768px) {
+	// tablet portrait
+}
+@media (min-width:769px) and (max-width:1023px) {
+	// tablet landscape
+}
+@media (min-width:1024px) and (max-width:1279px) {
+	// laptop
+}
+@media (min-width:1280px) {
+	// wide screen
+}
+*/
 
