@@ -50,9 +50,10 @@ export default class NewsletterSignUp extends Component {
 
 	render() {
 		const has_completed = this.state.step === 2;
+		const container_class = styles('container', `step-${this.state.step+1}`);
 
 		return (
-			<div className={styles('container')}>
+			<div className={container_class}>
 				<div className={styles('resizer')}>
 					<h1 className={styles('call-to-action')}>
 						<ExpressiveLabel text={has_completed ? Copy.CONGRATS : Copy.JOIN_THE_LIST} />

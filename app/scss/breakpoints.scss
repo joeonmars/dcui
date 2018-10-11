@@ -1,0 +1,15 @@
+// Breakpoint sass
+@import '~breakpoint-sass/stylesheets/breakpoint';
+
+// The responsive breakpoints
+$mobile: (max-width 640px);
+
+$above_mobile: (min-width 641px);
+
+$tablet-portrait: (min-width 641px) (max-width 768px);
+
+$tablet-landscape: (min-width 769px) (max-width 1024px);
+
+$tablet: (min-width 641px) (max-width 1024px);
+
+$desktop: (min-width:1025px);

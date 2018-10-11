@@ -1,6 +1,7 @@
 @import '~styles/colors';
 @import '~styles/ui';
 @import '~styles/eases';
+@import '~styles/breakpoints';
 
 .container {
 	appearance: none;
@@ -9,17 +10,14 @@
 	min-width: 150px;
 	background: transparent;
 	cursor: pointer;
-	font-size: 20px;
 }
 
-.container:hover .box,
-.container:focus .box {
+.container:hover .box {
 	color: $alizarin-crimson;
 	background: white;
 }
 
-.container:hover:not(:active) .box,
-.container:focus:not(:active) .box {
+.container:hover:not(:active) .box {
 	transform: translateY(-3px) scale(1.025);
 	box-shadow: -1px 4px 12px rgba(black, .5);
 }
@@ -44,4 +42,16 @@
 		background .15s $principleDefaultEase,
 		transform .15s $principleDefaultEase,
 		opacity .15s $principleDefaultEase;
+}
+
+@include breakpoint($mobile) {
+	.container {
+		font-size: 16px;
+	}
+}
+
+@include breakpoint($above-mobile) {
+	.container {
+		font-size: 20px;
+	}
 }
