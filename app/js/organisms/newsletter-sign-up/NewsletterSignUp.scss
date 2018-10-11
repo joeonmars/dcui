@@ -45,6 +45,11 @@
 	box-sizing: border-box;
 }
 
+.first-name,
+.last-name {
+	flex: 1;
+}
+
 .sign-up-complete {
 	.first-line,
 	.second-line {
@@ -141,11 +146,6 @@
 
 	.form-label {
 		text-align: center;
-	}
-
-	.first-name,
-	.last-name {
-		flex: 1;
 	}
 
 	.sign-up-complete {

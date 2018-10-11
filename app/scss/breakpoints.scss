@@ -14,6 +14,8 @@ $tablet-portrait: (min-width 641px) (max-width 768px);
 
 $tablet-landscape: (min-width 769px) (max-width 1024px);
 
+$tablet-landscape-and-below: (max-width 1024px);
+
 $tablet-landscape-and-above: (min-width 769px);
 
 $tablet: (min-width 641px) (max-width 1024px);
