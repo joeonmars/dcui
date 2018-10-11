@@ -5,6 +5,7 @@
 .container {
 	position: absolute;
 	width: 100%;
+	min-width: 320px;
 	height: 100%;
 	background: darken($vulcan, 3%);
 	display: flex;

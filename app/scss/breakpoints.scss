@@ -4,11 +4,17 @@
 // The responsive breakpoints
 $mobile: (max-width 640px);
 
-$above_mobile: (min-width 641px);
+$above-mobile: (min-width 641px);
+
+$tablet-portrait-and-below: (max-width 768px);
+
+$tablet-portrait-and-above: (min-width 641px);
 
 $tablet-portrait: (min-width 641px) (max-width 768px);
 
 $tablet-landscape: (min-width 769px) (max-width 1024px);
+
+$tablet-landscape-and-above: (min-width 769px);
 
 $tablet: (min-width 641px) (max-width 1024px);
 

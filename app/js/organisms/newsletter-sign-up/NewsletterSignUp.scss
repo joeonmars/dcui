@@ -38,6 +38,13 @@
 	order: 2;
 }
 
+.email,
+.opt-in,
+.first-name,
+.last-name {
+	box-sizing: border-box;
+}
+
 .sign-up-complete {
 	.first-line,
 	.second-line {
@@ -45,26 +52,14 @@
 	}
 }
 
-// Mobile
+//
 @include breakpoint($mobile) {
-	.container.step-3 .resizer{
-		justify-content: center;
-	}
-
 	.resizer {
-		flex-direction: column;
-		align-items: center;
 		height: 320px;
-		padding: 20px;
 	}
 
 	.call-to-action {
 		font-size: 36px;
-		margin-bottom: 10px;
-	}
-	
-	.form {
-		width: 100%;
 	}
 
 	.step {
@@ -74,20 +69,15 @@
 	.form-label {
 		font-size: 16px;
 		margin-bottom: 12px;
-		text-align: center;
 	}
 
-	.email {
+	.email,
+	.submit-button {
 		width: 100%;
-	}
-	
-	.first-name,
-	.last-name {
-		flex: 1;
 	}
 
 	.first-name {
-		margin-right: 10px;
+		padding-right: 10px;
 	}
 
 	.email,
@@ -99,17 +89,11 @@
 	.opt-in {
 		width: 100%;
 		padding: 0 10px;
-		box-sizing: border-box;
 		margin-top: 8px;
-	}
-
-	.submit-button {
-		width: 100%;
 	}
 
 	.sign-up-complete {
 		margin-top: 10px;
-		text-align: center;
 
 		.first-line {
 			max-width: 240px;
@@ -124,6 +108,52 @@
 }
 
 @include breakpoint($above-mobile) {
+	.email,
+	.first-name,
+	.last-name {
+		padding-top: 2px;
+	}
+
+	.email,
+	.opt-in {
+		padding-right: 20px;
+	}
+}
+
+@include breakpoint($tablet-portrait-and-below) {
+	.container.step-3 .resizer{
+		justify-content: center;
+	}
+
+	.resizer {
+		flex-direction: column;
+		align-items: center;
+		padding: 20px;
+	}
+
+	.call-to-action {
+		margin-bottom: 10px;
+	}
+
+	.form {
+		width: 100%;
+	}
+
+	.form-label {
+		text-align: center;
+	}
+
+	.first-name,
+	.last-name {
+		flex: 1;
+	}
+
+	.sign-up-complete {
+		text-align: center;
+	}
+}
+
+@include breakpoint($tablet-landscape-and-above) {
 	.resizer {
 		flex-direction: row;
 		height: 240px;
@@ -131,8 +161,8 @@
 	}
 
 	.call-to-action {
-		margin-left: 10%;
-		margin-right: 4.8%;
+		margin-left: 8%;
+		margin-right: 4%;
 		margin-top: 30px;
 	}
 
@@ -142,10 +172,6 @@
 
 	.step {
 		align-items: flex-start;
-	}
-
-	.email {
-		margin-right: 20px;
 	}
 
 	.email,
@@ -158,28 +184,8 @@
 		margin-bottom: 20px;
 	}
 
-	.email,
-	.first-name,
-	.last-name {
-		margin-top: 2px;
-	}
-
-	.first-name,
-	.last-name {
-		max-width: 235px;
-	}
-
-	.first-name {
-		margin-right: 10px;
-	}
-
-	.last-name {
-		margin-right: 20px;
-	}
-
 	.opt-in {
 		padding-right: 10%;
-		box-sizing: border-box;
 	}
 
 	.sign-up-complete {
@@ -195,28 +201,67 @@
 	}
 }
 
-// tablet portrait
-@include breakpoint($tablet-portrait) {
-	.call-to-action {
-		font-size: 50px;
+@include breakpoint($tablet-portrait-and-above) {
+	.first-name,
+	.last-name {
+		max-width: 235px;
+	}
+
+	.first-name {
+		padding-right: 10px;
+	}
+
+	.last-name {
+		padding-right: 20px;
 	}
 }
 
-// tablet landscape
+@include breakpoint($tablet-portrait) {
+	.resizer {
+		max-width: 600px;
+		height: 260px;
+	}
+
+	.step {
+		align-items: flex-start;
+	}
+
+	.call-to-action {
+		font-size: 50px;
+	}
+
+	.form-label {
+		margin-bottom: 12px;
+	}
+
+	.email,
+	.opt-in {
+		width: 70%;
+	}
+
+	.sign-up-complete {
+		.first-line {
+			font-size: 28px;
+			margin-bottom: 15px;
+		}
+		.second-line {
+			font-size: 20px;
+		}
+	}
+}
+
 @include breakpoint($tablet-landscape) {
 	.call-to-action {
 		font-size: 60px;
 	}
 }
 
-// all tablet
 @include breakpoint($tablet) {
 	.form-label {
 		font-size: 20px;
 	}
 }
 
-// desktop
 @include breakpoint($desktop) {
 	.call-to-action {
 		font-size: 80px;
