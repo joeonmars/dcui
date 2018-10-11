@@ -60,6 +60,7 @@
 //
 @include breakpoint($mobile) {
 	.resizer {
+		max-width: 480px;
 		height: 320px;
 	}
 
