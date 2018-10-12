@@ -4,11 +4,11 @@
 	background: rgba($alizarin-crimson, .15);
 
 	& ~ .message {
-		visibility: inherit;
+		display: block;
 	}
 }
 
 .message {
 	margin-top: 5px;
-	visibility: hidden;
+	display: none;
 }
