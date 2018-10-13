@@ -12,15 +12,47 @@ import InputWithMessage from 'js/molecules/input-with-message';
 import MultiStepForm from 'js/molecules/multi-step-form';
 
 
-const Copy = {
-	JOIN_THE_LIST: 'join the list',
-	CONGRATS: 'congratulations!',
-};
-
 export default class NewsletterSignUp extends Component {
 
 	static propTypes = {
-
+		data: PropTypes.shape({
+			cta: PropTypes.shape({
+				join_the_list: PropTypes.string.isRequired,
+				congrats: PropTypes.string.isRequired,
+			}).isRequired,
+			step_email: PropTypes.shape({
+				form_label: PropTypes.string.isRequired,
+				email: PropTypes.shape({
+					placeholder: PropTypes.string.isRequired,
+					invalid: PropTypes.string.isRequired,
+				}).isRequired,
+				opt_in: PropTypes.shape({
+					message: PropTypes.string.isRequired,
+					link: PropTypes.shape({
+						text: PropTypes.string.isRequired,
+						url: PropTypes.string.isRequired,
+					}).isRequired,
+					invalid: PropTypes.string.isRequired,
+				}).isRequired,
+				submit: PropTypes.string.isRequired,
+			}).isRequired,
+			step_full_name: PropTypes.shape({
+				form_label: PropTypes.string.isRequired,
+				first_name: PropTypes.shape({
+					placeholder: PropTypes.string.isRequired,
+					invalid: PropTypes.string.isRequired,
+				}).isRequired,
+				last_name: PropTypes.shape({
+					placeholder: PropTypes.string.isRequired,
+					invalid: PropTypes.string.isRequired,
+				}).isRequired,
+				submit: PropTypes.string.isRequired,
+			}).isRequired,
+			step_completion: PropTypes.shape({
+				first_line: PropTypes.string.isRequired,
+				second_line: PropTypes.string.isRequired,
+			}).isRequired,
+		}),
 	}
 
 	state = {
@@ -52,11 +84,18 @@ export default class NewsletterSignUp extends Component {
 		const has_completed = this.state.step === 2;
 		const container_class = styles('container', `step-${this.state.step+1}`);
 
+		const {
+			cta,
+			step_email,
+			step_full_name,
+			step_completion,
+		} = this.props.data;
+
 		return (
 			<div className={container_class}>
 				<div className={styles('resizer')}>
 					<h1 className={styles('call-to-action')}>
-						<ExpressiveLabel text={has_completed ? Copy.CONGRATS : Copy.JOIN_THE_LIST} />
+						<ExpressiveLabel text={has_completed ? cta.congrats : cta.join_the_list} />
 					</h1>
 
 					{!has_completed &&
@@ -70,7 +109,7 @@ export default class NewsletterSignUp extends Component {
 								<legend className={styles('form-label')}>
 									<RegularLabel
 										typography={RegularLabel.Typography.BOLD_ALL_CAPS}
-										text='Sign up for the TLC newsletter.'
+										text={step_email.form_label}
 									/>
 								</legend>
 								<InputWithMessage
@@ -79,8 +118,8 @@ export default class NewsletterSignUp extends Component {
 									name='email'
 									required={true}
 									className={styles('email')}
-									placeholder='enter email address'
-									invalid_message='Please enter a valid email address'
+									placeholder={step_email.email.placeholder}
+									invalid_message={step_email.email.invalid}
 								/>
 								<InputWithMessage
 									input={Checkbox}
@@ -88,12 +127,12 @@ export default class NewsletterSignUp extends Component {
 									default_checked={false}
 									id='opt_in'
 									className={styles('opt-in')}
-									label={<p>I agree to receive information from Discovery Communications in accordance with the following <a target='_blank' href='/'>Privacy Policy</a></p>}
-									invalid_message='Please opt in to proceed'
+									label={<p>{step_email.opt_in.message} <a target='_blank' href='${step_email.opt_in.link.url}'>{step_email.opt_in.link.text}</a></p>}
+									invalid_message={step_email.opt_in.invalid}
 								/>  
 								<SubmitButton
 									className={styles('submit-button')}
-									text='Next'
+									text={step_email.submit}
 								/>
 							</div>
 
@@ -101,7 +140,7 @@ export default class NewsletterSignUp extends Component {
 								<legend className={styles('form-label')}>
 									<RegularLabel
 										typography={RegularLabel.Typography.BOLD_ALL_CAPS}
-										text='Almost Done! Please Enter Your First and Last Name.'
+										text={step_full_name.form_label}
 									/>
 								</legend>
 								<InputWithMessage
@@ -109,20 +148,20 @@ export default class NewsletterSignUp extends Component {
 									required={true}
 									name='first'
 									className={styles('first-name')}
-									placeholder='First Name'
-									invalid_message='Enter first name'
+									placeholder={step_full_name.first_name.placeholder}
+									invalid_message={step_full_name.first_name.invalid}
 								/>
 								<InputWithMessage
 									input={TextInput}
 									required={true}
 									name='last'
 									className={styles('last-name')}
-									placeholder='Last Name'
-									invalid_message='Enter last name'
+									placeholder={step_full_name.last_name.placeholder}
+									invalid_message={step_full_name.last_name.invalid}
 								/>
 								<SubmitButton
 									className={styles('submit-button')}
-									text='Sign Up'
+									text={step_full_name.submit}
 								/>
 							</div>
 						</MultiStepForm>
@@ -134,12 +173,12 @@ export default class NewsletterSignUp extends Component {
 								<RegularLabel
 									className={styles('first-line')}
 									typography={RegularLabel.Typography.BOLD}
-									text='Thank You For Signing Up!'
+									text={step_completion.first_line}
 								/>
 								<RegularLabel
 									className={styles('second-line')}
 									typography={RegularLabel.Typography.LIGHT}
-									text='Look out for the latest news on your favorite shows.'
+									text={step_completion.second_line}
 								/>
 							</p>
 						</div>
