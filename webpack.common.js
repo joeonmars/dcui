@@ -1,14 +1,14 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var ROOT_PATH = path.resolve(__dirname);
-var STORIES_PATH = path.resolve(ROOT_PATH, 'stories');
-var APP_PATH = path.resolve(ROOT_PATH, 'app');
-var IMAGES_PATH = path.resolve(ROOT_PATH, 'app/images');
-var FONTS_PATH = path.resolve(ROOT_PATH, 'app/fonts');
-var JS_PATH = path.resolve(ROOT_PATH, 'app/js');
-var SCSS_PATH = path.resolve(ROOT_PATH, 'app/scss');
+const ROOT_PATH = path.resolve(__dirname);
+const STORIES_PATH = path.resolve(ROOT_PATH, 'storybook/stories');
+const APP_PATH = path.resolve(ROOT_PATH, 'app');
+const IMAGES_PATH = path.resolve(ROOT_PATH, 'app/images');
+const FONTS_PATH = path.resolve(ROOT_PATH, 'app/fonts');
+const JS_PATH = path.resolve(ROOT_PATH, 'app/js');
+const SCSS_PATH = path.resolve(ROOT_PATH, 'app/scss');
 
 module.exports = {
     entry: JS_PATH,
@@ -29,16 +29,6 @@ module.exports = {
 
     module: {
         rules: [{
-            test: /\.scss$/,
-            loaders: [
-                'classnames-loader',
-                'style-loader',
-                'css-loader?modules=1&sourceMap&importLoaders=1&localIdentName=[name]_[local]',
-                'postcss-loader',
-                'sass-loader'
-            ],
-            include: [APP_PATH, STORIES_PATH]
-        }, {
             test: /\.jsx?$/,
             loader: 'babel-loader',
             include: [JS_PATH, STORIES_PATH],
@@ -60,9 +50,6 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.DefinePlugin({
-        }),
-
         new HtmlWebpackPlugin({
             template: 'app/index.html',
         }),

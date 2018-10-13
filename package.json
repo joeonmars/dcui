@@ -4,10 +4,10 @@
   "description": "Sign up for newsletter test",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --open --config webpack.dev.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c storybook",
+    "build-app": "webpack --config webpack.prod.js",
+    "build-storybook": "build-storybook -c storybook -o build/storybook"
   },
   "repository": {
     "type": "git",

@@ -1,10 +1,12 @@
-var path = require('path');
-var merge = require('webpack-merge');
-var common = require('./webpack.common.js');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var ROOT_PATH = path.resolve(__dirname);
-var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
+const ROOT_PATH = path.resolve(__dirname);
+const APP_PATH = path.resolve(ROOT_PATH, 'app');
+const BUILD_PATH = path.resolve(ROOT_PATH, 'build/app');
 
 
 module.exports = merge(common, {
@@ -17,21 +19,27 @@ module.exports = merge(common, {
     module: {
         rules: [{
             test: /\.scss$/,
-            use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: [
-                    'css-loader',
-                    'postcss-loader',
-                    'sass-loader?outputStyle=expanded'
-                ]
-            })
+            use: [
+                'classnames-loader',
+                ...ExtractTextPlugin.extract({
+                    use: [
+                        'css-loader?modules=1&importLoaders=1&localIdentName=[name]_[local]',
+                        'postcss-loader',
+                        'sass-loader?outputStyle=compressed',
+                    ],
+                }),
+            ],
         }]
     },
 
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production'),
+        }),
+
         new ExtractTextPlugin({
             filename: 'bundle.css',
-            allChunks: true
+            allChunks: true,
         }),
     ]
 
