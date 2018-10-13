@@ -6,7 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const ROOT_PATH = path.resolve(__dirname);
 const APP_PATH = path.resolve(ROOT_PATH, 'app');
-const BUILD_PATH = path.resolve(ROOT_PATH, 'build/app');
+const BUILD_PATH = path.resolve(ROOT_PATH, 'docs');
 
 
 module.exports = merge(common, {

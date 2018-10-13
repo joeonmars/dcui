@@ -49,6 +49,7 @@ const TestPage = () => {
 	return (
 		<div className={styles('container')}>
 			<NewsletterSignUp data={newsletter_data} />
+			<a href='./storybook' target='_blank' className={styles('storybook')}>View UI on Storybook</a>
 		</div>
 	);
 };
