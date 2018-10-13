@@ -4,10 +4,19 @@ import classnames from 'classnames';
 import styles from './Checkbox.scss';
 
 
-const Checkbox = ({id, name, required, default_checked, label, onInvalid}) => {
+const Checkbox = ({
+	id,
+	name,
+	required,
+	default_checked,
+	label,
+	checkbox_className,
+	label_className,
+	onInvalid
+}) => {
 
-	const checkbox_class = classnames(styles('checkbox'));
-	const label_class = classnames(styles('label'));
+	const checkbox_class = classnames(styles('checkbox'), checkbox_className);
+	const label_class = classnames(styles('label'), label_className);
 
 	return (
 		<Fragment>
@@ -20,22 +29,25 @@ const Checkbox = ({id, name, required, default_checked, label, onInvalid}) => {
 				defaultChecked={default_checked}
 				onInvalid={onInvalid}
 			/>
-			<label
-				className={label_class}
-				htmlFor={id}
-			>
-				{label}
-			</label>
+			{label &&
+				<label
+					className={label_class}
+					htmlFor={id}
+				>
+					{label}
+				</label>
+			}
 		</Fragment>
 	);
 };
 
 Checkbox.propTypes = {
-	className: PropTypes.string,
+	checkbox_className: PropTypes.string,
+	label_className: PropTypes.string,
 	required: PropTypes.bool,
 	id: PropTypes.string,
 	name: PropTypes.string,
-	label: PropTypes.node.isRequired,
+	label: PropTypes.node,
 	default_checked: PropTypes.bool,
 	onInvalid: PropTypes.func,
 };

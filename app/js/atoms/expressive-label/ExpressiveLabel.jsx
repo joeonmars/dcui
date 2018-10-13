@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './ExpressiveLabel.scss';
 
-const ExpressiveLabel = ({text, className}) => {
+const ExpressiveLabel = ({text, style, className}) => {
 
 	const text_class = classnames(styles('text'), className);
 
 	return (
-		<span className={text_class}>
+		<span className={text_class} style={style}>
 			{text}
 		</span>
 	);
@@ -17,6 +17,7 @@ const ExpressiveLabel = ({text, className}) => {
 ExpressiveLabel.propTypes = {
   text: PropTypes.string.isRequired,
   className: PropTypes.string,
+  style: PropTypes.object,
 };
 
 export default ExpressiveLabel;

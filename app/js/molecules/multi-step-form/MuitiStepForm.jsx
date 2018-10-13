@@ -15,6 +15,8 @@ export default class MultiStepForm extends Component {
 
 	static defaultProps = {
 		initial_step: 0,
+		onStepComplete: step => {},
+		onAllComplete: form_data => {},
 	}
 
 	state = {

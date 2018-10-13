@@ -12,6 +12,7 @@ const TextInput = ({
 		required,
 		disabled,
 		placeholder,
+		default_value,
 		theme,
 		onInvalid,
 	}) => {
@@ -29,16 +30,22 @@ const TextInput = ({
 			disabled={disabled}
 			required={required}
 			placeholder={placeholder}
+			defaultValue={default_value}
 			onInvalid={onInvalid}
 		/>
 	);
 };
 
+TextInput.Theme = {
+	LIGHTER: 'lighter',
+	DARKER: 'darker',
+}
+
 TextInput.defaultProps = {
 	required: false,
 	disabled: false,
 	type: 'text',
-	theme: 'lighter',
+	theme: TextInput.Theme.LIGHTER,
 }
 
 TextInput.propTypes = {
@@ -48,6 +55,7 @@ TextInput.propTypes = {
 	required: PropTypes.bool,
 	disabled: PropTypes.bool,
 	placeholder: PropTypes.string,
+	default_value: PropTypes.string,
 	theme: PropTypes.oneOf(['lighter', 'darker']),
 	onInvalid: PropTypes.func,
 };

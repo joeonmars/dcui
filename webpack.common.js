@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var ROOT_PATH = path.resolve(__dirname);
+var STORIES_PATH = path.resolve(ROOT_PATH, 'stories');
 var APP_PATH = path.resolve(ROOT_PATH, 'app');
 var IMAGES_PATH = path.resolve(ROOT_PATH, 'app/images');
 var FONTS_PATH = path.resolve(ROOT_PATH, 'app/fonts');
@@ -36,11 +37,11 @@ module.exports = {
                 'postcss-loader',
                 'sass-loader'
             ],
-            include: APP_PATH
+            include: [APP_PATH, STORIES_PATH]
         }, {
             test: /\.jsx?$/,
             loader: 'babel-loader',
-            include: JS_PATH,
+            include: [JS_PATH, STORIES_PATH],
             query: {
                 presets: ['react', 'es2015', 'stage-2']
             }

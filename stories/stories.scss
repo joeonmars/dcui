@@ -1,0 +1,101 @@
+@import '~styles/colors';
+
+.regular-label {
+	margin: 20px;
+	display: block;
+	font-size: 30px;
+}
+
+.expressive-label {
+	margin: 20px;
+	display: block;
+	font-size: 100px;
+}
+
+.text-button {
+	margin: 20px;
+	min-width: 150px;
+}
+
+.text-input-container {
+	width: 400px;
+}
+
+.light-background,
+.dark-background {
+	padding: 50px;
+}
+
+.light-background {
+	background: $nepal;
+}
+
+.dark-background {
+	background: $vulcan;
+}
+
+.checkbox {
+	margin-left: 20px;
+}
+
+.checkbox-label {
+	width: 300px;
+}
+
+.checkbox,
+.checkbox-label {
+	display: inline-block;
+	vertical-align: text-top;
+	margin-top: 20px;
+}
+
+.form-for-input,
+.form-for-checkbox {
+	display: flex;
+	align-items: flex-start;
+}
+
+.form-for-input {
+	flex-direction: row;
+	width: 500px;
+
+	.text-button {
+		margin: 0 0 0 10px;
+	}
+
+	.text-input {
+		margin: 2px 0 0 0;
+	}
+}
+
+.form-for-checkbox {
+	flex-direction: column;
+	width: 300px;
+
+	.text-button {
+		margin: 10px 0 0 0;
+	}
+
+	.checkbox {
+		margin: 0;
+	}
+
+	.checkbox-label {
+		margin: 0;
+		width: auto;
+	}
+}
+
+.multi-step-form {
+	width: 400px;
+
+	.label {
+		display: block;
+		margin-bottom: 10px;
+	}
+
+	.text-button {
+		margin: 20px 0 0 0;
+	}
+}
+

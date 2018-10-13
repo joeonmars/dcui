@@ -9,20 +9,30 @@
 	border: none;
 	background: transparent;
 	cursor: pointer;
+	user-select: none;
 }
 
-.container:hover .box {
-	color: $alizarin-crimson;
-	background: white;
+.container:not(:disabled) {
+	&:hover .box {
+		color: $alizarin-crimson;
+		background: white;
+	}
+
+	&:hover:not(:active) .box {
+		transform: translateY(-3px) scale(1.025);
+		box-shadow: -1px 4px 12px rgba(black, .5);
+	}
+
+	&:active .box {
+		opacity: .8;
+		box-shadow: -1px 2px 6px rgba(black, .5);
+	}
 }
 
-.container:hover:not(:active) .box {
-	transform: translateY(-3px) scale(1.025);
-	box-shadow: -1px 4px 12px rgba(black, .5);
-}
-
-.container:active .box {
-	opacity: .8;
+.container:disabled .box {
+	color: rgba(white, .5);
+	opacity: .5;
+	cursor: not-allowed;
 }
 
 .box {
@@ -41,7 +51,7 @@
 		color .15s $principleDefaultEase,
 		background .15s $principleDefaultEase,
 		transform .15s $principleDefaultEase,
-		opacity .15s $principleDefaultEase;
+		opacity .15s $principleDefaultEase,
 }
 
 @include breakpoint($mobile) {

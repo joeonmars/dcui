@@ -23,6 +23,11 @@
 	color: $nepal;
 }
 
+.darker {
+	background: rgba(black, .1);
+	color: darken($nepal, 40%);
+}
+
 @include breakpoint($mobile) {
 	.input {
 		padding: 11px 15px;

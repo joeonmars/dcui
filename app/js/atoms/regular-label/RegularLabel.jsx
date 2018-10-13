@@ -10,12 +10,12 @@ const Typography = {
 	LIGHT_ALL_CAPS: 'light_all_caps',
 };
 
-const RegularLabel = ({text, typography, className}) => {
+const RegularLabel = ({text, style, typography, className}) => {
 
 	const text_class = classnames(styles('text', typography), className);
 
 	return (
-		<span className={text_class}>
+		<span className={text_class} style={style}>
 			{text}
 		</span>
 	);
@@ -31,6 +31,7 @@ RegularLabel.propTypes = {
   text: PropTypes.string.isRequired,
   typography: PropTypes.oneOf(Object.values(Typography)),
   className: PropTypes.string,
+  style: PropTypes.object,
 };
 
 export default RegularLabel;
