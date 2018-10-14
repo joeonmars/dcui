@@ -1,5 +1,6 @@
 # TLC Newsletter Sign Up
 
+
 ## Getting Started
 Clone the project and `npm install` in the directory. You'll need node and NPM for this.
 
@@ -11,3 +12,13 @@ Clone the project and `npm install` in the directory. You'll need node and NPM f
 ## Production
 1. To do a build for the production site, run `npm run build-app`. Find the output at `docs` folder.
 2. For the production bundle of storybook, run `npm run build-storybook`. The output is located at `docs/storybook`.
+
+## Delivery
+**Staging**
+<https://joeonmars.github.io/dcui/>
+
+**Storybook**
+<https://joeonmars.github.io/dcui/storybook/>
+
+**Repository**
+<https://github.com/joeonmars/dcui/>
